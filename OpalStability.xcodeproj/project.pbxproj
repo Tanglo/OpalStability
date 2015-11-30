@@ -72,6 +72,7 @@
 			buildConfigurationList = E52E0F631C0BF95000345771 /* Build configuration list for PBXNativeTarget "OpalStability" */;
 			buildPhases = (
 				E52E0F4D1C0BF94F00345771 /* Sources */,
+				E52E0F661C0BF97100345771 /* ShellScript */,
 				E52E0F4E1C0BF94F00345771 /* Frameworks */,
 				E52E0F4F1C0BF94F00345771 /* Resources */,
 			);
@@ -129,6 +130,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E52E0F661C0BF97100345771 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/tools/incBuildNum.sh \"${PROJECT_DIR}/${INFOPLIST_FILE}\" \"${PROJECT_DIR}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E52E0F4D1C0BF94F00345771 /* Sources */ = {
