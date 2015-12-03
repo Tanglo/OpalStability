@@ -8,20 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		E52E0F551C0BF95000345771 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52E0F541C0BF95000345771 /* AppDelegate.swift */; };
-		E52E0F571C0BF95000345771 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52E0F561C0BF95000345771 /* Document.swift */; };
-		E52E0F5A1C0BF95000345771 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52E0F581C0BF95000345771 /* Document.xib */; };
+		E52E0F571C0BF95000345771 /* LDWOpalDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52E0F561C0BF95000345771 /* LDWOpalDocument.swift */; };
+		E52E0F5A1C0BF95000345771 /* LDWOpalDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52E0F581C0BF95000345771 /* LDWOpalDocument.xib */; };
 		E52E0F5C1C0BF95000345771 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E52E0F5B1C0BF95000345771 /* Assets.xcassets */; };
 		E52E0F5F1C0BF95000345771 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52E0F5D1C0BF95000345771 /* MainMenu.xib */; };
+		E566807E1C0FCAD000B67B8A /* LDWOpalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E566807D1C0FCAD000B67B8A /* LDWOpalData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E52E0F511C0BF94F00345771 /* OpalStability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpalStability.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E52E0F541C0BF95000345771 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E52E0F561C0BF95000345771 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		E52E0F591C0BF95000345771 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Document.xib; sourceTree = "<group>"; };
+		E52E0F561C0BF95000345771 /* LDWOpalDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDWOpalDocument.swift; sourceTree = "<group>"; };
+		E52E0F591C0BF95000345771 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LDWOpalDocument.xib; sourceTree = "<group>"; };
 		E52E0F5B1C0BF95000345771 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E52E0F5E1C0BF95000345771 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E52E0F601C0BF95000345771 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E56680791C0FC80700B67B8A /* OpalStability-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpalStability-Bridging-Header.h"; sourceTree = "<group>"; };
+		E566807D1C0FCAD000B67B8A /* LDWOpalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDWOpalData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +57,11 @@
 		E52E0F531C0BF94F00345771 /* OpalStability */ = {
 			isa = PBXGroup;
 			children = (
+				E56680791C0FC80700B67B8A /* OpalStability-Bridging-Header.h */,
 				E52E0F541C0BF95000345771 /* AppDelegate.swift */,
-				E52E0F561C0BF95000345771 /* Document.swift */,
-				E52E0F581C0BF95000345771 /* Document.xib */,
+				E566807D1C0FCAD000B67B8A /* LDWOpalData.swift */,
+				E52E0F561C0BF95000345771 /* LDWOpalDocument.swift */,
+				E52E0F581C0BF95000345771 /* LDWOpalDocument.xib */,
 				E52E0F5B1C0BF95000345771 /* Assets.xcassets */,
 				E52E0F5D1C0BF95000345771 /* MainMenu.xib */,
 				E52E0F601C0BF95000345771 /* Info.plist */,
@@ -124,7 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E52E0F5C1C0BF95000345771 /* Assets.xcassets in Resources */,
-				E52E0F5A1C0BF95000345771 /* Document.xib in Resources */,
+				E52E0F5A1C0BF95000345771 /* LDWOpalDocument.xib in Resources */,
 				E52E0F5F1C0BF95000345771 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,7 +157,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E52E0F571C0BF95000345771 /* Document.swift in Sources */,
+				E52E0F571C0BF95000345771 /* LDWOpalDocument.swift in Sources */,
+				E566807E1C0FCAD000B67B8A /* LDWOpalData.swift in Sources */,
 				E52E0F551C0BF95000345771 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,12 +166,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E52E0F581C0BF95000345771 /* Document.xib */ = {
+		E52E0F581C0BF95000345771 /* LDWOpalDocument.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E52E0F591C0BF95000345771 /* Base */,
 			);
-			name = Document.xib;
+			name = LDWOpalDocument.xib;
 			sourceTree = "<group>";
 		};
 		E52E0F5D1C0BF95000345771 /* MainMenu.xib */ = {
@@ -263,11 +269,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = OpalStability/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LDW.OpalStability;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OpalStability/OpalStability-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -275,11 +284,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = OpalStability/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LDW.OpalStability;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OpalStability/OpalStability-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -302,6 +313,7 @@
 				E52E0F651C0BF95000345771 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

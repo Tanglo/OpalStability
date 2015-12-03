@@ -1,5 +1,5 @@
 //
-//  Document.swift
+//  LDWOpalDocument.swift
 //  OpalStability
 //
 //  Created by Lee Walsh on 30/11/2015.
@@ -8,7 +8,9 @@
 
 import Cocoa
 
-class Document: NSDocument {
+class LDWOpalDocument: NSDocument {
+    
+    var data = LDWOpalData()
 
     override init() {
         super.init()
@@ -27,7 +29,7 @@ class Document: NSDocument {
     override var windowNibName: String? {
         // Returns the nib file name of the document
         // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this property and override -makeWindowControllers instead.
-        return "Document"
+        return "LDWOpalDocument"
     }
 
     override func dataOfType(typeName: String) throws -> NSData {
