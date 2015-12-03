@@ -20,9 +20,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
+    
+    func applicationShouldOpenUntitledFile(sender: NSApplication) -> Bool {
+        return false
+    }
 
     @IBAction func importData(sender: AnyObject){
         print("Importing")
+        let openPanel = NSOpenPanel()
+        openPanel.canChooseDirectories = false
+        openPanel.canChooseFiles = true
+        openPanel.allowedFileTypes = ["h5","H5"]
+        let result = openPanel.runModal()
+        if result == NSModalResponseOK {
+            let newHdf5Dataset = LDWHDF5Dataset(fileURL: openPanel.URL!)
+            do{
+                let newDoc = try  NSDocumentController.sharedDocumentController().openUntitledDocumentAndDisplay(false) as! LDWOpalDocument
+                newDoc.data = LDWOpalData(hdf5Dataset: newHdf5Dataset)
+                newDoc.makeWindowControllers()
+                newDoc.showWindows()
+            } catch {
+                NSDocumentController.sharedDocumentController().presentError((error as NSError))
+            }
+        }
     }
 }
 

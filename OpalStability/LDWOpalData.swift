@@ -14,6 +14,10 @@ class LDWOpalData: NSObject, NSCoding {
         super.init()
     }
     
+    init(hdf5Dataset: LDWHDF5Dataset){
+        
+    }
+    
     required init(coder aDecoder: NSCoder) {
         
     }
