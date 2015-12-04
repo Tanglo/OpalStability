@@ -30,13 +30,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let openPanel = NSOpenPanel()
         openPanel.canChooseDirectories = false
         openPanel.canChooseFiles = true
-        openPanel.allowedFileTypes = ["h5","H5"]
+        openPanel.allowedFileTypes = ["csv","CSV"]
         let result = openPanel.runModal()
         if result == NSModalResponseOK {
-            let newHdf5Dataset = LDWHDF5Dataset(fileURL: openPanel.URL!)
+//            let newHdf5Dataset = LDWHDF5Dataset(fileURL: openPanel.URL!)
+            let newOpalData = LDWOpalData(csvFile: openPanel.URL!)
             do{
                 let newDoc = try  NSDocumentController.sharedDocumentController().openUntitledDocumentAndDisplay(false) as! LDWOpalDocument
-                newDoc.data = LDWOpalData(hdf5Dataset: newHdf5Dataset)
+//                newDoc.data = LDWOpalData(hdf5Dataset: newHdf5Dataset)
+                newDoc.data = newOpalData
                 newDoc.makeWindowControllers()
                 newDoc.showWindows()
             } catch {

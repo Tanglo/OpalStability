@@ -14,7 +14,12 @@ class LDWOpalData: NSObject, NSCoding {
         super.init()
     }
     
-    init(hdf5Dataset: LDWHDF5Dataset){
+/*    init(hdf5Dataset: LDWHDF5Dataset){
+        
+    }
+*/
+    
+    init(csvFile: NSURL){
         
     }
     
