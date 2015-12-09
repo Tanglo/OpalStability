@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E5067B311C0FE40E00C7C081 /* LDWHDF5Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5067B301C0FE40E00C7C081 /* LDWHDF5Dataset.swift */; };
 		E52E0F551C0BF95000345771 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52E0F541C0BF95000345771 /* AppDelegate.swift */; };
 		E52E0F571C0BF95000345771 /* LDWOpalDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52E0F561C0BF95000345771 /* LDWOpalDocument.swift */; };
 		E52E0F5A1C0BF95000345771 /* LDWOpalDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52E0F581C0BF95000345771 /* LDWOpalDocument.xib */; };
@@ -18,7 +17,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E5067B301C0FE40E00C7C081 /* LDWHDF5Dataset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDWHDF5Dataset.swift; sourceTree = "<group>"; };
 		E52E0F511C0BF94F00345771 /* OpalStability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpalStability.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E52E0F541C0BF95000345771 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E52E0F561C0BF95000345771 /* LDWOpalDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDWOpalDocument.swift; sourceTree = "<group>"; };
@@ -46,9 +44,9 @@
 		E52E0F481C0BF94F00345771 = {
 			isa = PBXGroup;
 			children = (
-				E59FFB851C17AFC100EDB825 /* LabBot.framework */,
 				E52E0F531C0BF94F00345771 /* OpalStability */,
 				E52E0F521C0BF94F00345771 /* Products */,
+				E59FFB851C17AFC100EDB825 /* LabBot.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,7 +63,6 @@
 			children = (
 				E56680791C0FC80700B67B8A /* OpalStability-Bridging-Header.h */,
 				E52E0F541C0BF95000345771 /* AppDelegate.swift */,
-				E5067B301C0FE40E00C7C081 /* LDWHDF5Dataset.swift */,
 				E566807D1C0FCAD000B67B8A /* LDWOpalData.swift */,
 				E52E0F561C0BF95000345771 /* LDWOpalDocument.swift */,
 				E52E0F581C0BF95000345771 /* LDWOpalDocument.xib */,
@@ -167,7 +164,6 @@
 				E52E0F571C0BF95000345771 /* LDWOpalDocument.swift in Sources */,
 				E566807E1C0FCAD000B67B8A /* LDWOpalData.swift in Sources */,
 				E52E0F551C0BF95000345771 /* AppDelegate.swift in Sources */,
-				E5067B311C0FE40E00C7C081 /* LDWHDF5Dataset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,10 +282,7 @@
 				INFOPLIST_FILE = OpalStability/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
-				OTHER_LDFLAGS = (
-					"-lhdf5",
-					"-lhdf5_hl",
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = LDW.OpalStability;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OpalStability/OpalStability-Bridging-Header.h";
@@ -310,10 +303,7 @@
 				INFOPLIST_FILE = OpalStability/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
-				OTHER_LDFLAGS = (
-					"-lhdf5",
-					"-lhdf5_hl",
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = LDW.OpalStability;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OpalStability/OpalStability-Bridging-Header.h";
