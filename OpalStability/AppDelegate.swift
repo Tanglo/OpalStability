@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import LabBot
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -33,16 +34,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         openPanel.allowedFileTypes = ["csv","CSV"]
         let result = openPanel.runModal()
         if result == NSModalResponseOK {
-//            let newHdf5Dataset = LDWHDF5Dataset(fileURL: openPanel.URL!)
-            let newOpalData = LDWOpalData(csvFile: openPanel.URL!)
             do{
-                let newDoc = try  NSDocumentController.sharedDocumentController().openUntitledDocumentAndDisplay(false) as! LDWOpalDocument
-//                newDoc.data = LDWOpalData(hdf5Dataset: newHdf5Dataset)
-                newDoc.data = newOpalData
-                newDoc.makeWindowControllers()
-                newDoc.showWindows()
+                let newOpalData = try LBDataMatrix(csvURL: openPanel.URL!, encoding: NSUnicodeStringEncoding)
+                do{
+                    let newDoc = try  NSDocumentController.sharedDocumentController().openUntitledDocumentAndDisplay(false) as! LDWOpalDocument
+                    newDoc.data = newOpalData
+                    newDoc.makeWindowControllers()
+                    newDoc.showWindows()
+                } catch {
+                    NSDocumentController.sharedDocumentController().presentError((error as NSError))
+                }
             } catch {
-                NSDocumentController.sharedDocumentController().presentError((error as NSError))
+                let errorAlert = NSAlert(error: error as NSError)
+                errorAlert.runModal()
             }
         }
     }

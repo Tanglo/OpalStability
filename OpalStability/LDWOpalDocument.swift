@@ -7,10 +7,11 @@
 //
 
 import Cocoa
+import LabBot
 
 class LDWOpalDocument: NSDocument {
     
-    var data = LDWOpalData()
+    var data = LBDataMatrix()
 
     override init() {
         super.init()
