@@ -9,18 +9,22 @@
 import Cocoa
 import LabBot
 
-class LDWOpalDocument: NSDocument {
+class LDWOpalDocument: NSDocument, NSTableViewDataSource {
     
     var opalData = LBDataMatrix()
+    @IBOutlet var opalDataTableView: NSTableView?
 
+    // MARK: Initialisation
     override init() {
         super.init()
         // Add your subclass-specific initialization here.
     }
-
+    
+    // MARK: NSDocument overrides
     override func windowControllerDidLoadNib(aController: NSWindowController) {
         super.windowControllerDidLoadNib(aController)
         // Add any code here that needs to be executed once the windowController has loaded the document's window.
+        self.setupOpalDataTableView()
     }
 
     override class func autosavesInPlace() -> Bool {
@@ -46,7 +50,31 @@ class LDWOpalDocument: NSDocument {
             throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
         }
     }
-
-
+    
+    
+    // MARK: NSTableViewDatasource
+    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+        if tableColumn != nil {
+            let variableName = tableColumn!.headerCell.stringValue
+            
+        }
+        return nil
+    }
+    
+    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+        return opalData.numberOfObservations()
+    }
+    
+    // MARK: Setup
+    func setupOpalDataTableView(){
+        while opalDataTableView!.tableColumns.count > 0{
+            opalDataTableView!.removeTableColumn(opalDataTableView!.tableColumns[0])
+        }
+        for i in 0..<opalData.numberOfVariables(){
+            let newTableColumn = NSTableColumn()
+            newTableColumn.headerCell.stringValue = opalData.nameOfVariableAtIndex(i)!
+            opalDataTableView!.addTableColumn(newTableColumn)
+        }
+    }
 }
 

@@ -35,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let result = openPanel.runModal()
         if result == NSModalResponseOK {
             do{
-                let newOpalData = try LBDataMatrix(csvURL: openPanel.URL!, titles: true, encoding: NSUnicodeStringEncoding)
+                let newOpalData = try LBDataMatrix(csvURL: openPanel.URL!, titles: true)
                 do{
                     let newDoc = try  NSDocumentController.sharedDocumentController().openUntitledDocumentAndDisplay(false) as! LDWOpalDocument
                     newDoc.opalData = newOpalData
