@@ -25,6 +25,7 @@ class LDWOpalDocument: NSDocument, NSTableViewDataSource {
         super.windowControllerDidLoadNib(aController)
         // Add any code here that needs to be executed once the windowController has loaded the document's window.
         self.setupOpalDataTableView()
+//        opalDataTableView!.reloadData()
     }
 
     override class func autosavesInPlace() -> Bool {
@@ -38,7 +39,7 @@ class LDWOpalDocument: NSDocument, NSTableViewDataSource {
     override func dataOfType(typeName: String) throws -> NSData {
         return NSKeyedArchiver.archivedDataWithRootObject(opalData)
         
-        //There should be no error.  Data should always be archivable.
+        //Data should always be archivable.
         //throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
     }
 
@@ -56,9 +57,12 @@ class LDWOpalDocument: NSDocument, NSTableViewDataSource {
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
         if tableColumn != nil {
             let variableName = tableColumn!.headerCell.stringValue
-            
+            let variable = opalData.variableWithName(variableName)
+            if variable != nil {
+                return variable![row]
+            }
         }
-        return nil
+        return "-"
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
@@ -71,10 +75,12 @@ class LDWOpalDocument: NSDocument, NSTableViewDataSource {
             opalDataTableView!.removeTableColumn(opalDataTableView!.tableColumns[0])
         }
         for i in 0..<opalData.numberOfVariables(){
-            let newTableColumn = NSTableColumn()
-            newTableColumn.headerCell.stringValue = opalData.nameOfVariableAtIndex(i)!
+            let variableName = opalData.nameOfVariableAtIndex(i)!
+            let newTableColumn = NSTableColumn(identifier: variableName)
+            newTableColumn.headerCell.stringValue = variableName
             opalDataTableView!.addTableColumn(newTableColumn)
         }
     }
+
 }
 

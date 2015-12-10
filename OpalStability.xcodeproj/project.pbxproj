@@ -14,6 +14,7 @@
 		E52E0F5F1C0BF95000345771 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52E0F5D1C0BF95000345771 /* MainMenu.xib */; };
 		E566807E1C0FCAD000B67B8A /* LDWOpalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E566807D1C0FCAD000B67B8A /* LDWOpalData.swift */; };
 		E59FFB861C17AFC100EDB825 /* LabBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E59FFB851C17AFC100EDB825 /* LabBot.framework */; };
+		E5CBB9611C1953A000D2D7BD /* To do.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E5CBB9601C1953A000D2D7BD /* To do.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		E56680791C0FC80700B67B8A /* OpalStability-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpalStability-Bridging-Header.h"; sourceTree = "<group>"; };
 		E566807D1C0FCAD000B67B8A /* LDWOpalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDWOpalData.swift; sourceTree = "<group>"; };
 		E59FFB851C17AFC100EDB825 /* LabBot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LabBot.framework; path = ../../../Library/Frameworks/LabBot.framework; sourceTree = "<group>"; };
+		E5CBB9601C1953A000D2D7BD /* To do.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "To do.rtf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		E52E0F531C0BF94F00345771 /* OpalStability */ = {
 			isa = PBXGroup;
 			children = (
+				E5CBB9601C1953A000D2D7BD /* To do.rtf */,
 				E56680791C0FC80700B67B8A /* OpalStability-Bridging-Header.h */,
 				E52E0F541C0BF95000345771 /* AppDelegate.swift */,
 				E566807D1C0FCAD000B67B8A /* LDWOpalData.swift */,
@@ -133,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E52E0F5C1C0BF95000345771 /* Assets.xcassets in Resources */,
+				E5CBB9611C1953A000D2D7BD /* To do.rtf in Resources */,
 				E52E0F5A1C0BF95000345771 /* LDWOpalDocument.xib in Resources */,
 				E52E0F5F1C0BF95000345771 /* MainMenu.xib in Resources */,
 			);
