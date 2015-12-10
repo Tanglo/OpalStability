@@ -35,7 +35,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let result = openPanel.runModal()
         if result == NSModalResponseOK {
             do{
-                let newOpalData = try LBDataMatrix(csvURL: openPanel.URL!, titles: true)
+                var newOpalData = try LBDataMatrix(csvURL: openPanel.URL!, titles: true)
+                var metadata: [String]
+                (metadata, newOpalData) = self.importDataMatrix(newOpalData)
                 do{
                     let newDoc = try  NSDocumentController.sharedDocumentController().openUntitledDocumentAndDisplay(false) as! LDWOpalDocument
                     newDoc.opalData = newOpalData
@@ -49,6 +51,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 errorAlert.runModal()
             }
         }
+    }
+    
+    func importDataMatrix(dataMatrix: LBDataMatrix) -> ([String], LBDataMatrix){
+        let numVariables = dataMatrix.numberOfVariables()
+        let numObservations = dataMatrix.numberOfObservations()
+        let metadataIndex = dataMatrix.indexOfVariable("Metadata")
+        var metadata = [String]()
+        let importedDataMatrix = LBDataMatrix(numberOfObservations: numObservations)
+        if metadataIndex != nil{
+            metadata = dataMatrix.variableAtIndex(metadataIndex!) as! [String]
+        }
+        for i in 0..<numVariables{
+            if dataMatrix.nameOfVariableAtIndex(i) != "Metadata"{
+                importedDataMatrix.appendVariable(dataMatrix.nameOfVariableAtIndex(i)!, values: dataMatrix.variableAtIndex(i)!)
+            }
+        }
+        
+        return (metadata, importedDataMatrix)
     }
 }
 
