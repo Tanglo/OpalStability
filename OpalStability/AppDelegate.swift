@@ -27,7 +27,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func importData(sender: AnyObject){
-        print("Importing")
         let openPanel = NSOpenPanel()
         openPanel.canChooseDirectories = false
         openPanel.canChooseFiles = true
@@ -40,7 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 (metadata, newOpalData) = self.importDataMatrix(newOpalData)
                 do{
                     let newDoc = try  NSDocumentController.sharedDocumentController().openUntitledDocumentAndDisplay(false) as! LDWOpalDocument
-                    newDoc.opalData = newOpalData
+                    newDoc.opalData = LDWOpalData(data: newOpalData, metadataArray: metadata)
                     newDoc.makeWindowControllers()
                     newDoc.showWindows()
                 } catch {
@@ -55,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func importDataMatrix(dataMatrix: LBDataMatrix) -> ([String], LBDataMatrix){
         let numVariables = dataMatrix.numberOfVariables()
-        let numObservations = dataMatrix.numberOfObservations()
+        let numObservations = dataMatrix.numberOfObservations() - 1  //the last row of the .csv data from the opal file is blank
         let metadataIndex = dataMatrix.indexOfVariable("Metadata")
         var metadata = [String]()
         let importedDataMatrix = LBDataMatrix(numberOfObservations: numObservations)
@@ -64,10 +63,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         for i in 0..<numVariables{
             if dataMatrix.nameOfVariableAtIndex(i) != "Metadata"{
-                importedDataMatrix.appendVariable(dataMatrix.nameOfVariableAtIndex(i)!, values: dataMatrix.variableAtIndex(i)!)
+                let variableName = dataMatrix.nameOfVariableAtIndex(i)!
+                importedDataMatrix.appendVariable(variableName, values: dataMatrix.variableAtIndex(i)!)
+                if (importedDataMatrix.variableWithName(variableName)![0] as! String).containsString("."){
+                    importedDataMatrix.changeStringVariableToDouble(variableName)
+                } else {
+                    importedDataMatrix.changeStringVariableToInt(variableName)
+                }
             }
         }
-        
         return (metadata, importedDataMatrix)
     }
 }

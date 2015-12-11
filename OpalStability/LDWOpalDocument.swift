@@ -11,7 +11,7 @@ import LabBot
 
 class LDWOpalDocument: NSDocument, NSTableViewDataSource {
     
-    var opalData = LBDataMatrix()
+    var opalData = LDWOpalData()
     @IBOutlet var opalDataTableView: NSTableView?
 
     // MARK: Initialisation
@@ -46,7 +46,7 @@ class LDWOpalDocument: NSDocument, NSTableViewDataSource {
     override func readFromData(data: NSData, ofType typeName: String) throws {
         let newData = NSKeyedUnarchiver.unarchiveObjectWithData(data)
         if newData != nil {
-            opalData = newData as! LBDataMatrix
+            opalData = newData as! LDWOpalData
         } else {
             throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
         }
@@ -57,7 +57,7 @@ class LDWOpalDocument: NSDocument, NSTableViewDataSource {
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
         if tableColumn != nil {
             let variableName = tableColumn!.headerCell.stringValue
-            let variable = opalData.variableWithName(variableName)
+            let variable = opalData.data.variableWithName(variableName)
             if variable != nil {
                 return variable![row]
             }
@@ -66,7 +66,7 @@ class LDWOpalDocument: NSDocument, NSTableViewDataSource {
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-        return opalData.numberOfObservations()
+        return opalData.data.numberOfObservations()
     }
     
     // MARK: Setup
@@ -74,8 +74,8 @@ class LDWOpalDocument: NSDocument, NSTableViewDataSource {
         while opalDataTableView!.tableColumns.count > 0{
             opalDataTableView!.removeTableColumn(opalDataTableView!.tableColumns[0])
         }
-        for i in 0..<opalData.numberOfVariables(){
-            let variableName = opalData.nameOfVariableAtIndex(i)!
+        for i in 0..<opalData.data.numberOfVariables(){
+            let variableName = opalData.data.nameOfVariableAtIndex(i)!
             let newTableColumn = NSTableColumn(identifier: variableName)
             newTableColumn.headerCell.stringValue = variableName
             opalDataTableView!.addTableColumn(newTableColumn)
