@@ -36,6 +36,7 @@ class LDWOpalData: NSObject, NSCoding {
         }
         return newMonitorLabelString
     }
+    var showRawData = false
     
     // MARK: Initialisation
     override init(){
@@ -135,6 +136,7 @@ class LDWOpalData: NSObject, NSCoding {
         decimationBypass = aDecoder.decodeIntegerForKey("decimationBypass")
         gravity = aDecoder.decodeDoubleForKey("gravity")
         magneticFieldMagnitude = aDecoder.decodeDoubleForKey("magneticFieldMagnitude")
+        showRawData = aDecoder.decodeBoolForKey("showRawData")
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -149,5 +151,6 @@ class LDWOpalData: NSObject, NSCoding {
         aCoder.encodeInteger(decimationBypass, forKey: "decimationBypass")
         aCoder.encodeDouble(gravity, forKey: "gravity")
         aCoder.encodeDouble(magneticFieldMagnitude, forKey: "magneticFieldMagnitude")
+        aCoder.encodeBool(showRawData, forKey: "showRawData")
     }
 }

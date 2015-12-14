@@ -13,6 +13,7 @@ class LDWOpalDocument: NSDocument, NSTableViewDataSource {
     
     var opalData = LDWOpalData()
     @IBOutlet var opalDataTableView: NSTableView?
+    @IBOutlet var showRawDataCheckBox: NSButton?
 
     // MARK: Initialisation
     override init() {
@@ -25,7 +26,11 @@ class LDWOpalDocument: NSDocument, NSTableViewDataSource {
         super.windowControllerDidLoadNib(aController)
         // Add any code here that needs to be executed once the windowController has loaded the document's window.
         self.setupOpalDataTableView()
-//        opalDataTableView!.reloadData()
+        if opalData.showRawData == true{
+            showRawDataCheckBox!.state = NSOnState
+        } else {
+            showRawDataCheckBox!.state = NSOffState
+        }
     }
 
     override class func autosavesInPlace() -> Bool {
@@ -76,10 +81,22 @@ class LDWOpalDocument: NSDocument, NSTableViewDataSource {
         }
         for i in 0..<opalData.data.numberOfVariables(){
             let variableName = opalData.data.nameOfVariableAtIndex(i)!
-            let newTableColumn = NSTableColumn(identifier: variableName)
-            newTableColumn.headerCell.stringValue = variableName
-            opalDataTableView!.addTableColumn(newTableColumn)
+            if !variableName.containsString("Raw") || opalData.showRawData{
+                let newTableColumn = NSTableColumn(identifier: variableName)
+                newTableColumn.headerCell.stringValue = variableName
+                opalDataTableView!.addTableColumn(newTableColumn)
+            }
         }
+    }
+    
+    // MARK: Interface
+    @IBAction func showRawData(sender: AnyObject){
+        if (sender as! NSButton).state == NSOnState{
+            opalData.showRawData = true
+        } else {
+            opalData.showRawData = false
+        }
+        self.setupOpalDataTableView()
     }
 
 }
