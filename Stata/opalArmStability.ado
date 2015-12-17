@@ -18,3 +18,10 @@ program opalArmStability
 	twoway line linearVelocityZMetres linearVelocityYMetres
 
 end
+
+//double integrate accelleration numerically
+/*	- use a step by step trapezoidal rule
+	- work out each point in first variable
+	- sum to get integral in a second variable
+	- will loose a timepoint for each integration
+*/
